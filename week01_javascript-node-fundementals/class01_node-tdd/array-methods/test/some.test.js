@@ -23,7 +23,7 @@ describe('some', () => {
             called.push(x);
             return isEven(x);
         });
-        assert.deepEqual(called, [2, 3]);
+        assert.deepEqual(called, [3, 2]);
 
     });
 });
