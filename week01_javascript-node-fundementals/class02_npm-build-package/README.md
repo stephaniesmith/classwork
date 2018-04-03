@@ -1,27 +1,28 @@
-# Class 02 `npm`, build, package
+# Class 02 `npm`, variables, closures, classes
 
 ## Questions and Feedback
 * ES6 Katas
     * Some of them are syntax corrections
     * Count as readings, not Labs
-* Resubmits are **only week only**
+* Resubmits are **one week only**
 * ?
 
 ## Learning Objectives
 
+* Understand "by val" vs "by ref"
 * Install Dependencies for a project
 * Setup and run a build scripts 
-* Use different patterns for exporting from modules:
-    * value or reference
-    * object literal with props
-    * factory function
-    * revealing module
-    * class
+* Use different patterns for exporting from modules
 * Include pre and post `npm` scripts
-* Begin using ES6 classes
+* Begin using ES6 classes and destructuring
 
 ## Agenda
 
+### ES6 
+
+* `let` and `const`
+* Template Strings
+* Destructuring
 
 ### Variables
 
@@ -30,13 +31,16 @@
 
 #### Primitive Values vs References
 
-* Primitive values stored in variables **are** the value of the variable
+* Primitive values stored in variables **are** the value in the variable table
 * Object-based values are stored as **references** in the variable table
 * (strings are weird, treat as primitive values)
 
 #### Assignment
 
-* Variables (and arguments) are assigned a value via `=`
+* Variables (and arguments) are assigned a value:
+    * via `=`
+    * **or**
+    * as arguments of a function call
 * `const` will not be reassigned
 * `let` can be reassigned
 * Use `const` be default

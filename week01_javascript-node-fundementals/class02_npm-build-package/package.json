@@ -1,0 +1,15 @@
+{
+  "name": "class02_npm-build-package",
+  "version": "1.0.0",
+  "description": "## Questions and Feedback * ES6 Katas     * Some of them are syntax corrections     * Count as readings, not Labs * Resubmits are **one week only** * ?",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Marty Nelson <marty@martypdx.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "mocha": "^5.0.5"
+  }
+}
