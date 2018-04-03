@@ -81,10 +81,6 @@
         * Class
     * Avoid props on `module.exports`
 
-#### ES6 Modules
-
-We'll be using CJS for first couple of weeks. Then switch to ES6 Modules for second half of course
-
 ### Build System
 
 * Why?
