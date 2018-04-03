@@ -70,7 +70,6 @@
             * built-in node module
             * local `node_modules`
             * global `node_modules`
-
     * Export patterns
         * Function
         * Higher Order Function
