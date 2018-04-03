@@ -1,11 +1,14 @@
 # Class 02 `npm`, build, package
 
 ## Questions and Feedback
+* ES6 Katas
+    * Some of them are syntax corrections
+    * Count as readings, not Labs
+* Resubmits are **only week only**
 * ?
 
 ## Learning Objectives
 
-* Process and OS, distributed systems
 * Install Dependencies for a project
 * Setup and run a build scripts 
 * Use different patterns for exporting from modules:
@@ -15,40 +18,10 @@
     * revealing module
     * class
 * Include pre and post `npm` scripts
-* Have a working model of asynchronous programming in NodeJS
-* Write and utilize asynchronous callback functions effectively:
-	* When consuming asynchronous APIs
-	* When exposing a function or method that relies on asynchronicity
-* Iterate the keys of an Object using `Object.keys(object)`, (also `.entries` and `values`)
+* Begin using ES6 classes
 
 ## Agenda
 
-### OS Process Review
-
-* A process is "unit of execution" controlled by the Operating System (OS)
-    * CPU time
-    * Memory space
-    * What else do we need from the OS?
-        * File Storage
-        * Networking
-        * (Access to Devices like keyboard and mouse and screen)
-* Distributed Systems
-    * The total set of processes involved in the overall "system"
-    * Client, Server [, Database]
-* Notes:
-    * Some systems are "Headless" - pure logic and execution, no UI
-    * npm packages add code but run in our process
-
-### Node.JS Architecture
-
-* What is it?
-* Node Event Loop
-    * Basic node architecture 101
-    * v8 + event-loop + os-lib
-    * Thread - actual "thread of execution"
-    * Event loop explained
-    * JavaScript single threaded event model
-* Demo: `event-loop.js`
 
 ### Variables
 
@@ -72,31 +45,6 @@
 #### Closures
 
 * Closures point to variable table, not value!
-
-### Passing functions in javascript
-
-* How do we
-	* return values?
-	* Propagate errors?
-* Node callback pattern `callback(err, result)`
-* Promise callback pattern:
-    ```js
-    someAsyncFn()
-    .then(result => { /*...*/ })
-    .catch(err => { /*...*/ });
-    ```
-* Some hard rules:
-    1. You can't create asynchronicity with just js
-    1. If your building functionality on top of asynchronous APIs, 
-    then your library must be asynchronous!
-    1. If a function or method uses asynchronous activity to complete its work, 
-    then that function must have an asynchronous interface (takes a callback or returns a promise)!
-* [Function passing patterns in JavaScript](https://github.com/martypdx/workshop-promises-fat-arrows/blob/master/async-js-patterns.md)
-* Testing async with Mocha `done` or return `Promise`
-    * test parameter
-    * Tests function.length
-    * if > 0, test is async
-    * calling done with any non-null argument is failure (matches node callback signature)
 
 ### Importing and Exporting Modules
 
@@ -173,3 +121,11 @@ _using `npm` and the project `package.json` file_.
 * Mocha
     * `only` and `skip`
     * `beforeEach` and friends
+
+### ES6 Classes and Libaries
+
+* DEMO: `CoolStringifier`
+
+### LAB
+
+* Testing non-deterministic data.
