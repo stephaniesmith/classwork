@@ -5,4 +5,4 @@ function Person(name) {
 
 Person.prototype.sayHello = function() {
     return this.name;
-}
+};
