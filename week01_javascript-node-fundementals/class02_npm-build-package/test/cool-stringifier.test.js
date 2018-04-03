@@ -13,6 +13,6 @@ describe('Cool Stringifier', () => {
     });
     
     it('reverse each word', () => {
-        assert.equal(cool.reverseWords(), 'siT si os looc');
+        assert.equal(cool.reverseWords(), 'sihT si os looc');
     });
 });
