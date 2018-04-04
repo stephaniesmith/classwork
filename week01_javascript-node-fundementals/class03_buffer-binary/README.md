@@ -48,3 +48,4 @@
 * `npm adduser` (or `npm login`)
 * package name (kebob-case)
 * version (1.0.0)
+* `main`

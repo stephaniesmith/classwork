@@ -1,7 +1,7 @@
 {
   "name": "cool-stringifier",
   "version": "1.0.0",
-  "description": "## Questions and Feedback * ?",
+  "description": "cool stuff",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
