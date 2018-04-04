@@ -10,7 +10,7 @@
 * Read, write, and manipulate encoded binary data using the Buffer class
 * Continue focusing on library design...
 
-## Agenda
+## Binary Data and Buffer
 
 ### Binary Data
 * What is meaning?
@@ -33,3 +33,14 @@
 * Lots of free editors - `iHex`
 * What is Hexidecimal?
 * Why does it fit well with binary?
+
+## Reading and writing a file
+
+* Sychronous read and write
+
+## Publish to npm
+
+* Create an npm account
+* `npm adduser` (or `npm login`)
+* package name (kebob-case)
+* version (1.0.0)
