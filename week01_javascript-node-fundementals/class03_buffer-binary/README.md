@@ -10,6 +10,10 @@
 * Read, write, and manipulate encoded binary data using the Buffer class
 * Continue focusing on library design...
 
+## JavaScript numbers
+* Binary: `0b01001101`
+* Hex: `0x4D`
+
 ## Binary Data and Buffer
 
 ### Binary Data
