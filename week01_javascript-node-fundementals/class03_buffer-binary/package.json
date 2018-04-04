@@ -1,0 +1,18 @@
+{
+  "name": "cool-stringifier",
+  "version": "1.0.0",
+  "description": "## Questions and Feedback * ?",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "mocha",
+    "start": "npm test -- -w"
+  },
+  "author": "Marty Nelson <marty@martypdx.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "mocha": "^5.0.5"
+  }
+}
