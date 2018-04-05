@@ -3,6 +3,8 @@
 ## Questions and Feedback
 * file system command are relative to `cwd` (`pwd`)
     * not the same as `require` which is relative to the file in which it appears
+* `mocha -w` hangs on some errors
+    * `nodemon`
 * ?
 
 ## Learning Objectives
@@ -40,13 +42,22 @@
     then your library must be asynchronous!
     1. If a function or method uses asynchronous activity to complete its work, 
     then that function must have an asynchronous interface (returns a promise)!
-* Demo
+* Wrapping with promises
+    * `require('util').promisify` for node callbacks
+    * `new Promise((resolve, reject) => { /*...*/ })`
+* Demo:
+    * Evolve `CoolStringifier`
+        * "static" methods
 	* ~~Mocha `done`~~
 		* test parameter
 		* Tests function.length
 		* if > 0, test is async, 
 		* calling done with any non-null argument is failure (matches node callback signature)
     * return a promise!
+
+### Use `nodemon` to run mocha in watch mode
+
+* Demo: `package.json`
 
 ### Developer Focus
 
