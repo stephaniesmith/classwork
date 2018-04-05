@@ -1,9 +1,8 @@
 {
   "name": "cool-stringifier",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "description": "cool stuff",
   "main": "index.js",
-  "files": [ "lib/transformers" ],
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
