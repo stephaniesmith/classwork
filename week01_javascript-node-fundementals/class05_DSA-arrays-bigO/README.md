@@ -12,6 +12,7 @@ DS&A, White Boarding and Big O
     * `O(n)`
     * `O(n^2)`
     * `O(2^n)` 
+    * `O(n!)` 
 1. Evaluate existing code to determine Big O in time or space
 
 
@@ -54,11 +55,17 @@ DS&A, White Boarding and Big O
 
 ## Algorythms
 
-* Big O
-    * [Big O Cheat Sheet](http://bigocheatsheet.com/)
-* Exercise:
-    * push/unshift
-    * pop/shift
+## Big O
+
+[Big O Cheat Sheet](http://bigocheatsheet.com/)
+
+* O(1): random access to an element in a collection, dependent on indexing
+* O(n): list iterations
+* O(n^2): nested loops on the same collection
+* O(log n): divide and conquer
+* O(n log n): iterations that use divide and conquer
+* O(n!): adding a nested loop for every input you have
+
 * Exercise:
     * (both partners) rewrite findDups to be more efficient `O(n*logn)`
 * Demo:

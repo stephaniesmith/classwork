@@ -1,12 +1,12 @@
-const count = 100;
+const count = 10000000;
 
 const arr = [];
 
-for ( var i = 0; i < count; i++ ) {
+for (var i = 0; i < count; i++) {
 	arr[i] = `hello ${i}`;
 }
 
-function findDups( arr ) {
+function findDups(arr) {
 	const dict = {};
 	let n;
 	for(var i = 0; i < arr.length; i++) {
@@ -16,7 +16,7 @@ function findDups( arr ) {
 	};
 	return false;
 }
-console.log( 'count', count );
-console.time( 'find dups' );
-console.log( findDups( arr ) );
-console.timeEnd( 'find dups' );
+console.log('count', count);
+console.time('find dups');
+console.log(findDups(arr));
+console.timeEnd('find dups');
