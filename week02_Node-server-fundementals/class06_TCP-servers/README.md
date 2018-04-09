@@ -9,6 +9,7 @@ Class 06: TCP Servers
 * Node Beginner Book
 	* Limited License
 * ?
+* Review upcoming week
 
 ## Today's Learning Objectives
 
