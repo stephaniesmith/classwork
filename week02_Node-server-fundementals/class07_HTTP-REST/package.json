@@ -6,11 +6,11 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "npm run mocha",
     "mocha": "mocha",
-    "test:dev": "npm run mocha -- -w",
+    "test": "npm run mocha",
+    "test:watch": "npm run mocha -- -w",
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:watch": "nodemon server.js"
   },
   "author": "Marty Nelson <marty@martypdx.com>",
   "license": "MIT",

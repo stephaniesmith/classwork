@@ -7,11 +7,12 @@
 ## Today's Learning Objectives
 
 1. Create HTTP server using Node.js
-2. Differentiate HTTP requests based on:
+1. Understand Request/Response cycle
+1. Differentiate HTTP requests based on:
 	* `url` (path)
 	* `method` (verb) 
 	* Other request factors (`query`, `content-type`)
-3. E2E servers using Mocha (and chai-http for HTTP)
+1. E2E servers using Mocha (and chai-http for HTTP)
 
 ## Tool Review
 
@@ -67,6 +68,12 @@ HTTP status codes:
 * `300` (about the resource, hasn't changed, redirect here)
 * `400` user did something wrong
 * `500` something went wrong on our server
+
+
+## Scripts
+
+* role of `npm start`
+* need separate test watch!
 
 ## New Tools!!
 
