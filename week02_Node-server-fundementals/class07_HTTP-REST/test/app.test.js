@@ -17,14 +17,31 @@ describe(('http app'), () => {
             });
     });
 
-    it('return cat object on GET /cat', () => {
+    it('says hello world on GET / with query', () => {
         return chai.request(app)
-            .get('/cat')
+            .get('/')
+            .query('salutation=yo')
+            .then(({ text }) => {
+                assert.equal(text, 'yo world');
+            });
+    });
+
+    it('return cat object on GET /cats/garfield', () => {
+        return chai.request(app)
+            .get('/cats/garfield')
             .then(response => {
                 assert.deepEqual(response.body, {
                     name: 'garfield',
                     type: 'orange tabby'
                 });
+            });
+    });
+
+    it('return cat object on GET /cats', () => {
+        return chai.request(app)
+            .get('/cats')
+            .then(response => {
+                assert.deepEqual(response.body.length, 4);
             });
     });
 
@@ -38,8 +55,19 @@ describe(('http app'), () => {
                 },
                 // error handler
                 response => {
-                    assert.equal(response.status == 404);
+                    assert.equal(response.status, 404);
                 }
             );
+    });
+
+    it('echos POST to /echo', () => {
+        const obj = { foo: true };
+
+        return chai.request(app)
+            .post('/echo')
+            .send(obj)
+            .then(({ body }) => {
+                assert.deepEqual(body, obj);
+            });
     });
 });
