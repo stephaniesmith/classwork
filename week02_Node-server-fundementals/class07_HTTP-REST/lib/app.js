@@ -24,6 +24,7 @@ module.exports = (req, res) => {
             });
     }
     else if(pathname === '/file') {
+        res.setHeader('Content-Type', 'text/html');
         const readStream = createReadStream(`${__dirname}/test.html`);
         readStream.pipe(res);
     }
