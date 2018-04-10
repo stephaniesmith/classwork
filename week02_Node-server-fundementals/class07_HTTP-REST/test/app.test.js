@@ -17,14 +17,31 @@ describe('http app', () => {
             });
     });
 
-    it('returns cat object on GET /cat', () => {
+    it('says custom greeting on GET / with query', () => {
         return chai.request(app)
-            .get('/cat')
+            .get('/')
+            .query('salutation', 'yo')
+            .then(({ text }) => {
+                assert.equal(text, 'yo world');
+            });
+    });
+
+    it('returns cat object on GET /cats/garfield', () => {
+        return chai.request(app)
+            .get('/cats/garfield')
             .then(response => {
                 assert.deepEqual(response.body, { 
                     name: 'garfield',
                     type: 'orange tabby' 
                 });
+            });
+    });
+
+    it('returns all cats on GET /cats', () => {
+        return chai.request(app)
+            .get('/cats')
+            .then(response => {
+                assert.equal(response.body.length, 4);
             });
     });
 
