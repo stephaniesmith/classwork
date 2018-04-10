@@ -1,1 +1,3 @@
-module.exports = (salutation = 'hello') => `${salutation} world`;
+module.exports = (salutation = 'hello') => {
+    return `${salutation} world`;
+};

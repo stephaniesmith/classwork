@@ -20,7 +20,7 @@ describe('http app', () => {
     it('says custom greeting on GET / with query', () => {
         return chai.request(app)
             .get('/')
-            .query('salutation', 'yo')
+            .query('salutation=yo')
             .then(({ text }) => {
                 assert.equal(text, 'yo world');
             });
@@ -58,7 +58,17 @@ describe('http app', () => {
                     assert.equal(response.status, 404);
                     // assert.equal(response.text, 'Sorry...')
                 }
-            );
-            
+            ); 
+    });
+
+    it('echos POST to /echo', () => {
+        const obj = { foo: true };
+
+        return chai.request(app)
+            .post('/echo')
+            .send(obj)
+            .then(({ body }) => {
+                assert.deepEqual(body, obj);
+            });
     });
 });
