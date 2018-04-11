@@ -48,17 +48,10 @@ describe('http app', () => {
     it('return 404 on bad path', () => {
         return chai.request(app)
             .get('/bad')
-            .then(
-                // success handler
-                () => {
-                    throw new Error('unexpected successful response');
-                },
-                // failure handler
-                response => {
-                    assert.equal(response.status, 404);
-                    // assert.equal(response.text, 'Sorry...')
-                }
-            ); 
+            .then(response => {
+                assert.equal(response.status, 404);
+                // assert.equal(response.text, 'Sorry...')
+            }); 
     });
 
     it('echos POST to /echo', () => {

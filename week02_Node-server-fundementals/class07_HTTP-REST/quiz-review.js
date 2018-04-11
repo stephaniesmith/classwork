@@ -14,10 +14,12 @@ Input	Output
 const assert = require('assert');
 
 it('returns big square over 20', () => {
-    assert.deepEqual(bigSquare([1, 4, 5, 7]), [25, 49]);
+    assert.deepEqual(bigSquares([1, 4, 5, 7]), [25, 49]);
 });
 
 
 /* big-squares.js */
-module.exports = numbers => numbers.map(x => x * x).filter(x => x > 20);
+
+// module.exports = 
+const bigSquares = numbers => numbers.map(x => x * x).filter(x => x > 20);
 
