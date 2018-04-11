@@ -10,6 +10,7 @@
 
 1. Use "Routes" to isolated logic for specific resources
 1. Recognize REST pattern of CRUD
+1. Create a highly-organized and layered Data API Server App
 
 ## Agenda
 
@@ -25,8 +26,8 @@ method | path
 
 ### Parsing Routes
 
-* Method then Resource, or
-* Resource then Method
+1. Method then Resource, or
+1. **Resource then Method**
 
 ### Dictionary/Map
 

@@ -11,6 +11,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS pets(
     id SERIAL PRIMARY KEY,
     name VARCHAR(256),
+    color VARCHAR(256),
     category_id INTEGER NOT NULL REFERENCES categories(id),
     description VARCHAR(256)
   );
