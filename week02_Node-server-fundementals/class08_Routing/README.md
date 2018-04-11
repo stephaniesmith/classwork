@@ -2,6 +2,7 @@
 
 ## Questions, Feedback
 * `chai-http 4.x` [breaking change](https://github.com/chaijs/chai-http/releases)
+    * Semver!
 * add `npm-debug.log` to `.gitignore`
 * ?
 	
