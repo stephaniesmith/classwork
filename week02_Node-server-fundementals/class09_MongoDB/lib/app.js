@@ -1,19 +1,33 @@
-const parseUrl = require('./utils/parse-url');
-const bodyParser = require('./utils/body-parser');
-const notFound = require('./utils/not-found');
-const responseJSON = require('./utils/response-json');
-const crews = require('./routes/crews');
+const { parse } = require('url');
+const pirates = require('./routes/pirates');
+const notFound = require('./routes/not-found');
+const bodyParser = require('./body-parser');
+const { createReadStream } = require('fs');
 
 const routes = {
-    crews
+    __proto__: null,
+    pirates
 };
 
 module.exports = (req, res) => {
-    req.requested = parseUrl(req.url);
-    responseJSON(res);
+    if(req.url === '/' && req.method === 'GET') {
+        return createReadStream(`${__dirname}/index.html`)
+            .pipe(res);
+    }
+
+    const parsedUrl = parse(req.url, true);
+    req.query = parsedUrl.query;
+    req.paths = parsedUrl.pathname.slice(1).split('/');
+    const key = req.paths[0];
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send = obj => res.end(JSON.stringify(obj));
+
+    const route = routes[key] || notFound;
+
     bodyParser(req)
-        .then(() => {
-            const route = routes[req.requested.route] || notFound;
+        .then(body => {
+            req.body = body;
             route(req, res);
         });
 };
