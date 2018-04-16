@@ -1,29 +1,14 @@
 const express = require('express');
-
 const app = express();
+const path = require('path');
+const penguins = require('./penguins');
 
-app.get('/hello', (req, res) => {
-    res.json('hello');
-});
+const publicDir = path.resolve(__dirname, '../public');
 
-app.get('/penguins', (req, res) => {
-    console.log(req.query);
-    res.json([
-        { name: 'bernard', type: 'emperor' },
-        { name: 'bernice', type: 'chinstrap' },
-    ]);
-});
+app.use(express.static(publicDir));
 
-app.get('/penguins/:foo/:id', (req, res) => {
-    console.log(req.params);
-    res.json({ name: 'bernard', type: 'emperor' });
-});
+app.use(express.json());
 
-app.post('/penguins', (req, res) => {
-    res.json({
-        name: 'your saved penguin name',
-        type: 'saved type'
-    });
-});
+app.use('/penguins', penguins);
 
 app.listen(3000);
