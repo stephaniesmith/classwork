@@ -57,3 +57,7 @@
 
 * Shorthand for `Object.assign`
 * Works for maps into arrays
+
+### Error Handling
+
+_Time permitting_
