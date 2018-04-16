@@ -1,6 +1,5 @@
 1. Install express
-2. Use an app.js with export
-3. Use server.js to run
+2. Use an app.js with listen
 
 Create a GET express route the "echos" a summary of what was
 requested. Include at least one "dynamic" portion in your path (`/:id`).
