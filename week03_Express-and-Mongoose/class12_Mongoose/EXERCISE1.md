@@ -10,12 +10,13 @@
         * `zip` - String
         * `state` - String
     * `size` - Number
-    * `founded` - Date
+    * ~~`founded` - Date~~
     * `isHip` - Boolean
     * `keywords` - Array of Strings
 
 1. Write Test
-    * Create model with all required fields (should pass `validate`)
+    * Create data with all required fields and pass to model
+    checking that `.toJSON()` gives back all fields
 1. Model
     1. Write Schema
     1. Export Model (give singular name `'Company'`)

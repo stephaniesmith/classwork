@@ -1,14 +1,17 @@
 # Class 12 Mongoose
 
 ## Questions and Issues?
-
 * ?
 
 ## Today's Learning Objectives
 * Learn to use mongoose to enforce data schema and
 validate data
 
-### Mongoose
+## Preflight
+
+Survey today's expected outcome
+
+## Mongoose
 * Why?
 * use `npm i mongoose -S` (no need for `mongodb`)
 * Mongoose Schemas
@@ -47,3 +50,7 @@ validate data
     * **EXERCISE 3:** Using Mongoose methods
 * More Schema Options
 	* timestamp
+
+## Searching
+
+_Time Permitting_
