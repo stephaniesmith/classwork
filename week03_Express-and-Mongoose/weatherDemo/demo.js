@@ -35,9 +35,8 @@ function processLocationData (data) {
 
 Promise.all([request.get(weatherurl), request.get(locationurl)])
   .then(results => {
-    console.log(processWeatherData(results[0].body));
-    console.log('-------');
-    console.log(processLocationData(results[1].body));
+    let output = {...processWeatherData(results[0].body), ...processLocationData(results[1].body)};
+    console.log(output);
   })
   .catch(err => {
     console.log(`Error: ${err}`);
