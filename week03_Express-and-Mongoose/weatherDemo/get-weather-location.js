@@ -36,7 +36,7 @@ module.exports = function getLocationWeather(zip) {
         get(getWeather(zip)).then(processWeatherData),
         get(getLocation(zip)).then(processLocationData)
     ]).then(([ weather, location ]) => {
-        return { ...weather, ...location };
+        return { weather, location };
     });
 }
 
