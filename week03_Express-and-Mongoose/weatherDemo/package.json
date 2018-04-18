@@ -9,6 +9,7 @@
   "author": "David Goodwin <goodwid@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "superagent": "^3.8.2"
   }
 }

@@ -1,4 +1,6 @@
 const request = require('superagent');
+const dotenv = require('dotenv);
+dotenv.config();
 
 const apiKey = process.env.WU_API_KEY;
 const zip = process.argv[2] || '97211';
