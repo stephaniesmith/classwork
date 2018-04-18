@@ -42,4 +42,9 @@ app.use((req, res) => {
     res.sendFile(require('path').resolve(__dirname, '../public/404.html'));
 });
 
+app.use((err, req, res, next) => {
+
+});
+
+
 app.listen(3000);

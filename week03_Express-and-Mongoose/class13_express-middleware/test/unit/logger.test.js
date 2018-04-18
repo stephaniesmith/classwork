@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const createLogger = require('../../lib/utils/logger');
+const createLogger = require('../../lib/util/logger');
 
 describe('logger', () => {
 
@@ -26,6 +26,6 @@ describe('logger', () => {
         assert.equal(message, 'GET /foo');
 
         // test that next was called
-        assert.ok(called);
+        assert.ok(called, 'expected next to be called');
     });
 });
