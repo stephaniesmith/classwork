@@ -1,44 +1,43 @@
 const { assert } = require('chai');
-const createAuth = require('../../lib/utils/cathentication');
+const cathentication = require('../../lib/util/cathentication');
 
 describe('cathentication', () => {
-    let ensureAuth = null;
-    beforeEach(() => ensureAuth = createAuth('meow'));
 
-    it('calls next when correct token is passed', () => {
-        const req = { 
-            query: { access_token: 'meow' } 
-        };
-        let called = false;
-        const next = () => called = true;
+    it('calls next when query access_token is password', () => {
 
-        ensureAuth(req, null, next);
-        
-        assert.ok(called);
-    });
+        const middleware = cathentication('meow');
 
-    it('sends 401 when correct token not passed', () => {
-        const req = { 
-            query: { access_token: 'woof' } 
-        };
-
-        const res = {
-            status(code) { 
-                this.statusCode = code;
-                return this;
-            },
-            send(message) { 
-                this.message = message; 
+        const req = {
+            query: {
+                access_token: 'meow'
             }
         };
 
         let called = false;
-        const next = () => called = true;
+        const next = () => { called = true; };
+
+        middleware(req, null, next);
+
+        assert.isTrue(called);
+    });
+
+    it('return 401 if bad password', () => {
+        const middleware = cathentication('meow');
         
-        ensureAuth(req, res, next);
-        
-        assert.equal(res.statusCode, 401);
-        assert.equal(res.message, 'user not cathenticated');
-        assert.equal(called, false);
+        const req = {
+            query: {
+                access_token: 'woof'
+            }
+        };
+        const res = {
+            sendStatus(code) {
+                this.code = code;
+            }
+        };
+        const next = () => assert.fail('should not call next');
+
+        middleware(req, res, next);
+
+        assert.equal(res.code, 401);
     });
 });
