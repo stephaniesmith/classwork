@@ -1,5 +1,5 @@
 const request = require('superagent');
-const dotenv = require('dotenv);
+const dotenv = require('dotenv');
 dotenv.config();
 
 const apiKey = process.env.WU_API_KEY;
