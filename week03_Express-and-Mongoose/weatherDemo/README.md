@@ -4,7 +4,6 @@ use:
 
 ``` js
 node demo.js [zipcode]
-
 ```
 
 You will need a Weather Underground API key, stored in the .env file.

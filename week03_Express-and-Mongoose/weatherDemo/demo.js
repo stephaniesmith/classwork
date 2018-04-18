@@ -10,8 +10,10 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const url = `http://api.wunderground.com/api/${apiKey}/wu/astronomy/hourly/q/${zip}.json`
-function processData (data) {
+const locationurl = `http://api.wunderground.com/api/${apiKey}/conditions/q/${zip}.json`;
+const weatherurl = `http://api.wunderground.com/api/${apiKey}/wu/astronomy/hourly/q/${zip}.json`;
+
+function processWeatherData (data) {
   return {
     temperature:  data.hourly_forecast[0].temp.english,
     condition:    data.hourly_forecast[0].condition,
@@ -22,11 +24,20 @@ function processData (data) {
   };
 }
 
+function processLocationData (data) {
+  return {
+    city:       data.current_observation.display_location.city,
+    state:      data.current_observation.display_location.state,
+    country:    data.current_observation.display_location.country,
+    elevation:  data.current_observation.display_location.elevation
+  }
+}
 
-request
-  .get(url)
-  .then(res => {
-    console.log(processData(res.body));
+Promise.all([request.get(weatherurl), request.get(locationurl)])
+  .then(results => {
+    console.log(processWeatherData(results[0].body));
+    console.log('-------');
+    console.log(processLocationData(results[1].body));
   })
   .catch(err => {
     console.log(`Error: ${err}`);
