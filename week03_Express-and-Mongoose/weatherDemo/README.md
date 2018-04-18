@@ -1,4 +1,4 @@
-This will get the weather of the local zip from Weahter Underground API.
+This will get the weather of the local zip from Weather Underground API.
 
 use:
 
@@ -6,4 +6,4 @@ use:
 node demo.js [zipcode]
 ```
 
-You will need a Weather Underground API key, stored in the .env file.
+You will need a Weather Underground API key, from [Weather Underground](https://www.wunderground.com/weather/api), stored in the .env file.
