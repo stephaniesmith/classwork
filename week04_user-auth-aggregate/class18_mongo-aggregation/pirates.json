@@ -1,0 +1,41 @@
+[{
+	"_id": {
+		"$oid": "5ad67a2a9918417ec4c93190"
+	},
+	"wardrobe": {
+		"shoes": "flip-flops"
+	},
+	"weapons": [
+		"hands",
+		"feet",
+		"head"
+	],
+	"name": "Monkey D. Luffy",
+	"role": "captain",
+	"crew": "Straw Hat Pirates",
+	"joined": {
+		"$date": "2018-04-17T22:50:18.732Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5ad67a469918417ec4c93191"
+	},
+	"wardrobe": {
+		"shoes": "boots"
+	},
+	"weapons": [
+		"sword",
+		"sword",
+		"sword"
+	],
+	"name": "Roronoa Zoro",
+	"role": "crew",
+	"crew": "Straw Hats",
+	"joined": {
+		"$date": "2018-04-17T22:50:46.941Z"
+	},
+	"__v": 0
+}]
+

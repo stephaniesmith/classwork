@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "5ae1010924d754bec117f69d",
+    "name": "1081 Fulton",
+    "cuisine": "American",
+    "borough": "Brooklyn",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117f4eb",
+    "name": "15 Flavors",
+    "cuisine": "Ice Cream, Gelato, Yogurt, Ices",
+    "borough": "Bronx",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117f37a",
+    "name": "16 Handles",
+    "cuisine": "Ice Cream, Gelato, Yogurt, Ices",
+    "borough": "Manhattan",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117f97f",
+    "name": "168 Tea Llc",
+    "cuisine": "Juice, Smoothies, Fruit Salads",
+    "borough": "Queens",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117f4f2",
+    "name": "4Th Down",
+    "cuisine": "American",
+    "borough": "Brooklyn",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117edb4",
+    "name": "A&E Networks",
+    "cuisine": "Café/Coffee/Tea",
+    "borough": "Manhattan",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117effb",
+    "name": "A-Town Buffalo Wings",
+    "cuisine": "Chicken",
+    "borough": "Brooklyn",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117f77b",
+    "name": "Adp Innovations Lab",
+    "cuisine": "American",
+    "borough": "Manhattan",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117eff7",
+    "name": "Almadira",
+    "cuisine": "Italian",
+    "borough": "Brooklyn",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  },
+  {
+    "_id": "5ae1010924d754bec117eb29",
+    "name": "Alor Pasta",
+    "cuisine": "Italian",
+    "borough": "Staten Island",
+    "average": 2,
+    "min": 2,
+    "max": 2
+  }
+]

@@ -3,7 +3,7 @@ const connect = require('../../lib/util/connect');
 const mongoose = require('mongoose');
 const request = require('./request');
 
-before(() => connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pirates-test'));    
+before(() => connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/aggregation-fun'));    
 after(() => mongoose.connection.close());
 
 module.exports = {
@@ -13,6 +13,10 @@ module.exports = {
             .catch(err => {
                 if(err.codeName !== 'NamespaceNotFound') throw err;
             });
+    },
+
+    getDatabaseName() {
+        return mongoose.connection.name;
     },
 
     createToken(data = { email: 'me@me.com', password: 'abc' }) {
