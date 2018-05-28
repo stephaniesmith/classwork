@@ -108,6 +108,10 @@ Loaders can be added to webpack to transform the data (code/json/images/etc.) im
     * Binding issues
     * Why arrow functions rock
 
+## Review destructuring
+
+* Object properties
+
 ## React
 
 React is a component based view and state management library. It's designed to be declarative, making it "painless" to create interactive UIs. React can run in browsers and natively on mobile devices.
