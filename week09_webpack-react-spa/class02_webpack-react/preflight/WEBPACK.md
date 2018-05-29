@@ -1,30 +1,16 @@
-Webpack From Scratch
+Webpack From Scatch
 ===
-
-Webpack is a module bundler for JS applications. It compiles modern JavaScript applications into bundles that can be loaded into a browser. **All of your projects' assets should be managed by webpack**, including JSON, JS, CSS, SCSS, HTML, IMAGES, FONTS, etc.
 
 ## Webpack Terminology
 
 ### Loaders
 
-Loaders are involved on `import`/`require`.
-
-Loaders can be added to webpack to transform the data (code/json/images/etc.) imported into a project. Loaders are configured to only apply their transformations to files that match user defined regular expressions. Loaders can be chained together to transform data. Some examples include...
-
-* Transform ES6 files into ES5 files with Babel
-* Transform SCSS files into CSS files
-* Transform images/fonts into base64 data embedded into your SASS/CSS
+Loaders are involved on `import`/`require`
 
 ### Plugins
 
-Plugins do additional work outside of tree. Some plugins are used in conjunction with loaders (`Extract Text`)
-
-Plugins can be added to webpack to add extra functionality. Some examples include...
-
-* Creating HTML files with dynamic script and link tags
-* Creating CSS files
-* Uglifying and minifying your code
-* Creating project global vars at compile time
+Plugins do additional work outside of tree. Some plugins are used in 
+conjunction with loaders (`Extract Text`)
 
 ## Setup
 
@@ -45,7 +31,6 @@ Plugins can be added to webpack to add extra functionality. Some examples includ
 ### Add Clean Webpack Plugin
 
 Remove old bundle files by cleaning them when build
-
 1. `npm i clean-webpack-plugin -D`
 1. Add to `plugins` section of `webpack.config.js`
     ```js

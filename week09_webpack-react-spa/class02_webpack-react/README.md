@@ -46,11 +46,11 @@ Frontend 01: Tooling (Webpack) and React
 
 * What do they do?
     * Render and Manipulate the DOM
-* But what do they help me do?
-    * Keep the DOM up to date
         1. Text nodes
         1. Element properties
         1. Blocks (multiplicity)
+* But what do they help me do?
+    * Keep the DOM up to date
     * Respond to user interactions
 * Reactive programming
     * Offer developers API for declaring or describing:
@@ -77,27 +77,11 @@ Frontend 01: Tooling (Webpack) and React
 
 * ES6 Modules
 * Switch to 2 space indentation
+* Use `src` (not `lib`) for all source assets (html, css, js)
 
 ## Webpack
 
-Webpack is a module bundler for JS applications. It compiles modern JavaScript applications into bundles that can be loaded into a browser. **All of your projects' assets should be managed by webpack**, including JSON, JS, CSS, SCSS, HTML, IMAGES, FONTS, etc.
-
-### Plugins
-
-Plugins can be added to webpack to add extra functionality. Some examples include...
-
-* Creating HTML files with dynamic script and link tags
-* Creating CSS files
-* Uglifying and minifying your code
-* Creating project global vars at compile time
-
-### Loaders
-
-Loaders can be added to webpack to transform the data (code/json/images/etc.) imported into a project. Loaders are configured to only apply their transformations to files that match user defined regular expressions. Loaders can be chained together to transform data. Some examples include...
-
-* Transform ES6 files into ES5 files with Babel
-* Transform SCSS files into CSS files
-* Transform images/fonts into base64 data embedded into your SASS/CSS
+[Webpack details](webpack.md)
 
 ## Review ES6 Classes
 
