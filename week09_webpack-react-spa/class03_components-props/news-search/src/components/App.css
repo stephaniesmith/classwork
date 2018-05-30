@@ -13,12 +13,6 @@ header {
 
   .search-container {
     padding: 5px 0;
-    text-align: right;
-  }
-  
-  &:hover {
-    color: white;
-    background: steelblue;
   }
 }
 
