@@ -25,7 +25,7 @@ Components and Props
 
 * Add `.travis.yml`
 * Let's add Object Spread and Class Properties to `babel`
-    * `> npm i babel-plugin-transform-class-properties babel-plugin-tnsform-class-properties babel-plugin-transform-object-rest-spread -D`
+    * `> npm i babel-plugin-transform-class-properties babel-plugin-transform-object-rest-spread -D`
 * Conditional rendering via if or ternary (loading example)
 
 ## Instantiate a React Component (Birds and the Bees of Parent/Child Components)

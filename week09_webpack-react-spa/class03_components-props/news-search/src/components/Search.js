@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './Search.css';
-import Sources from './Sources';
+import /*styles from */ './Search.css';
 
 export default class Search extends Component {
 
-  static propTypes = {
-    onSearch: PropTypes.func.isRequired
-  };
-
   state = {
-    topic: '',
-    sources: []
+    search: ''
+  };
+  
+  handleChange = ({ target }) => {
+    this.setState({ search: target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
-    this.props.onSearch({ ...this.state });
-  };
-
-  handleTopic = ({ target }) => {
-    this.setState({ topic: target.value });
-  };
-
-  handleSources = sources => {
-    this.setState({ sources });
+    this.props.onSearch(this.state);
   };
 
   render() {
-    const { topic } = this.state;
+    const { search } = this.state;
 
     return (
-      <form className={styles.search} onSubmit={this.handleSubmit}>
+      <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
         <label>
           Search For:&nbsp;
-          <input value={topic} onChange={this.handleTopic}/>
+          <input value={search} onChange={this.handleChange}/>
         </label>
-        <Sources onSelect={this.handleSources}/>
         <button>Search</button>
       </form>
     );

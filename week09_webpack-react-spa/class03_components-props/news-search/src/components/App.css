@@ -1,15 +1,42 @@
-:local(.app) {
+header {
+  background: lightsteelblue;
+  padding: 10px;
 
-  header, main {
-    padding: 20px;
+  .header-container {
+    display: flex;
+    align-items: center;
+  
+    > h1 {
+      font-size: 14pt;
+    }
   }
 
-  .search-header {
-    padding: 10px;
+  .search-container {
+    padding: 5px 0;
+    text-align: right;
   }
-
-  .error {
-    color: red;
+  
+  &:hover {
+    color: white;
+    background: steelblue;
   }
+}
 
+main {
+  position: relative;
+  padding: 10px;
+
+  .notifications {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    right: 5px;
+    opacity: .7;
+    background: black;
+    color: white;
+    
+    * {
+      margin: 5px 10px;
+    }
+  }
 }

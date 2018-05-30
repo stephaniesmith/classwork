@@ -1,86 +1,74 @@
 import React, { Component } from 'react';
 import styles from './App.css';
-import Search from './Search';
-import Paging from './Paging';
-import Articles from './Articles';
 import { search } from '../services/newsApi';
-
-const PAGE_SIZE = 20;
+import logo from './logo.png';
+import Search from './Search';
+import Articles from './Articles';
+import Paging from './Paging';
 
 export default class App extends Component {
 
   state = {
-    articles: null,
     topic: '',
+    loading: false,
+    error: null,
+    totalResults: 0,
     page: 1,
     perPage: 20,
-    totalResults: 0,
-    loading: false,
-    error: null
+    articles: []
   };
 
   searchNews = () => {
-    const { topic, sources, page, perPage } = this.state;
+    const { topic, page, perPage } = this.state;
 
-    this.setState({ loading: true, error: null });
+    this.setState({ loading: true });
     
-    search({ topic, sources }, page, perPage)
-      .then(
-        ({ articles, totalResults }) => {
-          this.setState({ articles, totalResults });
-        }, 
-        error => this.setState({ error }))
-      .then(() => {
-        this.setState({ loading: false });
-      });
+    search({ topic }, { page, perPage })
+      .then(({ articles, totalResults }) => {
+        this.setState({ articles, totalResults, error: null });
+      }, error => {
+        this.setState({ error });
+      })
+      .then(() => this.setState({ loading: false }));
+
   };
 
-  handleSearch = (search) => {
-    this.setState(search, this.searchNews);
+  handleSearch = ({ search }) => {
+    this.setState({ topic: search }, this.searchNews);
   };
 
-  handlePrev = () => this.handlePaging(-1);
-  handleNext = () => this.handlePaging(1);
-
-  handlePaging = incr => {
-    this.setState(
-      prev => ({ page: prev.page + incr }),
-      this.searchNews
-    );
+  handlePage = ({ page }) => {
+    this.setState({ page }, this.searchNews);
   };
 
   render() {
-    const { articles, error, loading, page, topic, totalResults } = this.state;
+    const { articles, loading, totalResults, page, perPage, error } = this.state;
 
     return (
-      <div className={styles.app}>
+      <div>
         <header>
-          <Search onSearch={this.handleSearch}/>
+          <div className="header-container">
+            <img src={logo}/>
+            <h1>News Search</h1>
+          </div>
+          <div className="search-container">
+            <Search onSearch={this.handleSearch}/>
+          </div>
         </header>
         <main>
-          <div className="search-header">
-            {articles ? 
-              <div>
-                <h4>Search for &quot;{topic}&quot; found {totalResults} matches</h4>
-              </div> 
-              : 
-              <div>Please search above</div>
-            }
-          </div>
-
-          <div>{loading && 'Loading...'}</div>
-          <pre className="error">{error && error.message}</pre>
-
-          {articles && (
-            <div>
-              <Paging totalResults={totalResults} 
-                page={page} 
-                perPage={PAGE_SIZE} 
-                onPrev={this.handlePrev} 
-                onNext={this.handleNext}/>
-              <Articles articles={articles}/>
-            </div>
-          )}
+          <section className="notifications">
+            {loading && <div>Loading...</div>}
+            {error && <div>Error :( {error.message}</div>}
+          </section>
+          <section>
+            <Paging 
+              totalResults={totalResults}
+              page={page}
+              perPage={perPage}
+              onPage={this.handlePage}/>
+            <Articles articles={articles}/>
+          </section>
+        
         </main>
       </div>
     );
