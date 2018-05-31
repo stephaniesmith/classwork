@@ -10,7 +10,7 @@ export default class SearchForm extends Component {
   };
 
   state = {
-    current: props.searchTerm || ''
+    current: this.props.searchTerm || ''
   };
 
   componentWillReceiveProps({ searchTerm }) {
