@@ -1,0 +1,18 @@
+
+:local(.details) {
+  
+  > h2 {
+    color: orange;
+  }
+
+  > p {
+    color: blue;
+  }
+
+}
+
+:local(.banana) {
+  h3 {
+    color: black
+  }
+}

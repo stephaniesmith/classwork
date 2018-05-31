@@ -1,0 +1,17 @@
+@import '../../styles/colors';
+
+:local(.app) {
+
+  $width: 300px;
+
+  .sidebar {
+    float: left;
+    width: $width;
+    background: $secondary;
+  }
+
+  .main-area {
+    margin-left: $width;
+    background: $primary;
+  }
+}
