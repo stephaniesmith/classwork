@@ -1,17 +1,6 @@
-@import '../../styles/colors';
+@import './Paddings.css';
 
-:local(.app) {
-
-  $width: 300px;
-
-  .sidebar {
-    float: left;
-    width: $width;
-    background: $secondary;
-  }
-
-  .main-area {
-    margin-left: $width;
-    background: $primary;
-  }
+li {
+  display: inline-block;
+  padding: $padding;
 }

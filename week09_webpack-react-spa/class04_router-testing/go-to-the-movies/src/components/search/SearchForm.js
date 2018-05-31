@@ -5,23 +5,34 @@ import styles from './SearchForm.css';
 export default class SearchForm extends Component {
 
   static propTypes = {
-    //searchTerm: PropTypes.string,
+    searchTerm: PropTypes.string,
     onSearch: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      current: props.searchTerm || ''
-    };
+  state = {
+    current: props.searchTerm || ''
+  };
+
+  componentWillReceiveProps({ searchTerm }) {
+    if(searchTerm !== this.state.current) {
+      this.setState({ current: searchTerm || '' });
+    }
   }
+
+  handleChange = ({ target }) => {
+    this.setState({ current: target.value });
+  };
 
   handleSubmit = event => {
     event.preventDefault();
+    this.callSearch();
+  };
+
+  callSearch() {
     const { current } = this.state;
     if(!current) return;
     this.props.onSearch(current);
-  };
+  }
 
   render() {
     const { current } = this.state;
@@ -30,8 +41,8 @@ export default class SearchForm extends Component {
       <form className={styles.search} onSubmit={this.handleSubmit}>
         <fieldset>
           <label>
-            Big Search for Movies: <input value={current} 
-              onChange={({ target }) => this.setState({ current: target.value })} 
+            Search for Movies: <input value={current} 
+              onChange={this.handleChange} 
               name="search" 
               placeholder="enter movie search"/>
           </label>

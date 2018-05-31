@@ -1,0 +1,11 @@
+:local(.header) {
+  display: flex;
+  align-items: center;
+  
+  background: lightsteelblue;
+
+  h1 {
+    display: inline-block;
+    font-size: 18px;
+  }
+}

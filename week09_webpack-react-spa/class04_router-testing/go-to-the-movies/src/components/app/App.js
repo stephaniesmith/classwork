@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
-import ComponentA from './ComponentA';
-import ComponentB from './ComponentB';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Header from './Header';
+import Home from './Home';
+import About from './About';
 import Search from '../search/Search';
-import styles from './App.css';
+import MovieDetail from '../movies/MovieDetail';
+
+
+import './App.css';
 
 export default class App extends Component {
   
@@ -11,18 +15,19 @@ export default class App extends Component {
 
     return (
       <Router>
-        <div className={styles.app}>
-          <h1>I am App!</h1>
-          {/* <section>
-            <div className="sidebar">
-              <ComponentA message={'some real string message'}
-                movie={{ title: 'm', year: 1971 }}/>
-            </div>
-            <div className="main-area">
-              <ComponentB/>
-            </div>
-          </section> */}
-          <Search/>
+        <div>
+          <Header/>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/about" component={About}/>
+              <Route path="/search" component={Search}/>
+              <Route path="/movies/:id" render={({ match, history }) => {
+                return <MovieDetail imdbID={match.params.id} history={history}/>;
+              }}/>
+              <Redirect to="/"/>
+            </Switch>
+          </main>
         </div>
       </Router>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Movie.css';
 
 export default class Movie extends Component {
@@ -17,11 +17,11 @@ export default class Movie extends Component {
 
     return (
       <li className={styles.movie}>
-        {/* <Link to={`/movies/${imdbID}`}> */}
+        <Link to={`/movies/${imdbID}`}>
           <img alt={Title} src={Poster}/>
           <h3>{Title}</h3>
           <p>Released {Year}</p>
-        {/* </Link> */}
+        </Link>
       </li>
     );
   }
