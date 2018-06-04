@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movies from '../movies/Movies';
-import SearchForm from '../search/SearchForm';
+import SearchForm from './SearchForm';
+import Paging from '../paging/Paging';
 import { search } from '../../services/movieApi';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
@@ -17,7 +18,8 @@ export default class Search extends Component {
   state = {
     movies: null,
     error: null,
-    searchTerm: ''
+    searchTerm: '',
+    page: 1
   };
 
   componentDidMount() {
@@ -32,11 +34,12 @@ export default class Search extends Component {
   }
   
   searchFromQuery(query) {
-    const { search: searchTerm } = queryString.parse(query);
-    this.setState({ searchTerm });
+    const { search: searchTerm, page } = queryString.parse(query);
+
+    this.setState({ searchTerm, page: +page });
     if(!searchTerm) return;
 
-    search(searchTerm)
+    search(searchTerm, page)
       .then(({ Search }) => {
         this.setState({ movies: Search });
       })
@@ -45,21 +48,43 @@ export default class Search extends Component {
       });
   }
 
-  handleSearch = searchTerm => {
+  makeSearch = () => {
     this.setState({ error: null });
+    const { searchTerm, page } = this.state;
     
+    const query = {
+      search: searchTerm || '',
+      page: page || 1
+    }
+
     this.props.history.push({
-      search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
+      search: queryString.stringify(query)
     });
   };
+
+  handleSearch = searchTerm => {
+    this.setState({ 
+      error: null,
+      searchTerm,
+      page: 1
+    }, this.makeSearch);
+  };
+
+  handlePage = page => {
+    this.setState({ 
+      error: null,
+      page
+    }, this.makeSearch);
+  }
   
   render() {
-    const { movies, error, searchTerm } = this.state;
+    const { movies, error, searchTerm, page } = this.state;
 
     return (
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
+        <Paging page={page} onPage={this.handlePage}/>
         {(!error && movies) && <Movies movies={movies}/>}
       </div>
     );

@@ -11,6 +11,12 @@ import './App.css';
 
 export default class App extends Component {
   
+  state = {
+    html: { 
+      __html: '<p>Some <strong>bold</strong> ideas</p><script>console.log("hack")</script>'
+    }
+  };
+
   render() {
 
     return (
@@ -28,6 +34,7 @@ export default class App extends Component {
               <Redirect to="/"/>
             </Switch>
           </main>
+          <div dangerouslySetInnerHTML={this.state.html}></div>
         </div>
       </Router>
     );

@@ -11,8 +11,8 @@ export function checkResponseData(response) {
   return response;
 }
 
-export function search(term) {
-  const url = `${URL}&s=${encodeURIComponent(term)}`;
+export function search(term, page) {
+  const url = `${URL}&s=${encodeURIComponent(term)}&page=${page}`;
   return get(url);
 }
 
