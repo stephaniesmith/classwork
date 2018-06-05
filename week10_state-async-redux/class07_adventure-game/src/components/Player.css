@@ -1,0 +1,8 @@
+:local(.player) {
+  padding: 10px;
+  border: 1px solid #aaa;
+  
+  span {
+    font-weight: bolder;
+  }
+}
