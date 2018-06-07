@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FruitForm from './FruitForm';
+import Comments from './Comments';
 
 export default class Fruit extends Component {
 
@@ -29,7 +30,7 @@ export default class Fruit extends Component {
 
   render() {
     const { editing } = this.state;
-    const { fruit, onRemove /*, onUpdate*/ } = this.props;
+    const { fruit, onRemove } = this.props;
     const { name, color } = fruit;
 
     return (
@@ -49,6 +50,7 @@ export default class Fruit extends Component {
             />
           </div>
         }
+        <Comments fruitId={fruit.id}/>
       </li>
     );
   }

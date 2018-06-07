@@ -1,10 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { fruits } from './components/fruits/reducers';
-// import { player } from './components/player/reducers';
+import { fruits, commentsByFruit } from './components/fruits/reducers';
 
 const rootReducer = combineReducers({
-  fruits: fruits,
-  // player: player
+  fruits,
+  commentsByFruit
 });
 
 const store = createStore(

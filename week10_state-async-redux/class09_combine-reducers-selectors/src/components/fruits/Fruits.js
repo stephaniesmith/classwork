@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FruitForm from './FruitForm';
 import Fruit from './Fruit';
+import { getFruits } from './reducers';
 import { loadFruits, addFruit, updateFruit, removeFruit } from './actions';
 
 class Fruits extends Component {
@@ -10,6 +11,7 @@ class Fruits extends Component {
   static propTypes = {
     fruits: PropTypes.array,
     addFruit: PropTypes.func.isRequired,
+    updateFruit: PropTypes.func.isRequired,
     removeFruit: PropTypes.func.isRequired,
     loadFruits: PropTypes.func.isRequired
   };
@@ -41,7 +43,7 @@ class Fruits extends Component {
 
 export default connect(
   // fn that maps state to props
-  state => ({ fruits: state.fruits }),
+  state => ({ fruits: getFruits(state) }),
   // list of actions to inject as props
   { loadFruits, addFruit, updateFruit, removeFruit }
 )(Fruits);

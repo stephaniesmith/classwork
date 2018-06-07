@@ -1,5 +1,15 @@
-import { FRUITS_LOAD, FRUIT_ADD, FRUIT_UPDATE, FRUIT_REMOVE } from './reducers';
-import { loadFruits, addFruit, updateFruit, removeFruit } from './actions';
+import { 
+  FRUITS_LOAD, 
+  FRUIT_ADD, 
+  FRUIT_UPDATE, 
+  FRUIT_REMOVE,
+  COMMENT_ADD } from './reducers';
+import { 
+  loadFruits, 
+  addFruit, 
+  updateFruit, 
+  removeFruit,
+  addComment } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadFruits();
@@ -36,4 +46,21 @@ it('create an remove action', () => {
     type: FRUIT_REMOVE,
     payload: fruit
   });
+});
+
+
+it('create an add comment', () => {
+  const parentId = 123;
+  const data = { text: 'yummy' };
+
+  const { type, payload } = addComment(parentId, data);
+  expect(type).toBe(COMMENT_ADD);
+
+  const { fruitId, comment } = payload;
+  expect(fruitId).toBe(parentId);
+  
+  const { text, id, timestamp } = comment;
+  expect(text).toBe(data.text);
+  expect(id).toBeTruthy();
+  expect(timestamp).toBeTruthy();
 });
