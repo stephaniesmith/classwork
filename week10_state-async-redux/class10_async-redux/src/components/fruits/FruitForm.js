@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './FruitForm.css';
 
@@ -7,7 +7,7 @@ const defaultState = {
   color: ''
 };
 
-export default class FruitForm extends Component {
+export default class FruitForm extends PureComponent {
 
   static propTypes = {
     fruit: PropTypes.object,

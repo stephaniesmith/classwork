@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import FruitForm from './FruitForm';
 import Comments from './Comments';
 
-export default class Fruit extends Component {
+export default class Fruit extends PureComponent {
 
   state = {
     editing: false
@@ -32,6 +32,8 @@ export default class Fruit extends Component {
     const { editing } = this.state;
     const { fruit, onRemove } = this.props;
     const { name, color } = fruit;
+    
+    console.log('Fruit component rendering for', name);
 
     return (
       <li key={name}>

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 export function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
 
 
   return function(ComponentToWrap) {
     
-    return class Container extends Component {
+    return class Container extends PureComponent {
 
       render() {
         const { store, dispatch } = this.context;

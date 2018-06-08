@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-export default class AddComment extends Component {
+export default class AddComment extends PureComponent {
 
   static propTypes = {
     onAdd: PropTypes.func.isRequired,

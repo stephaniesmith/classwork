@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FruitForm from './FruitForm';
@@ -6,7 +6,7 @@ import Fruit from './Fruit';
 import { getFruits } from './reducers';
 import { loadFruits, addFruit, updateFruit, removeFruit } from './actions';
 
-class Fruits extends Component {
+class Fruits extends PureComponent {
 
   static propTypes = {
     fruits: PropTypes.array,

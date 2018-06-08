@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from './actions';
 import { getCommentsByFruit } from './reducers';
 import AddComment from './AddComment';
 
-class Comments extends Component {
+class Comments extends PureComponent {
 
   static propTypes = {
     fruitId: PropTypes.string.isRequired,

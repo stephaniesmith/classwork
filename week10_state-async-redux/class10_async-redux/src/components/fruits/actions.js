@@ -4,56 +4,94 @@ import {
   FRUIT_UPDATE, 
   FRUIT_REMOVE,
   COMMENT_ADD } from './reducers';
-import shortid from 'shortid';
+
+import {
+  ERROR,
+  LOADING_START,
+  LOADING_END
+} from '../app/reducers';
+
+import { 
+  getFruits,
+  postFruit,
+  putFruit,
+  deleteFruit,
+  postComment
+} from '../../services/api';
 
 
-const fruits = () => [
-  addFruit({ 
-    name: 'banana', 
-    color: 'yellow',
-    comments: [
-      { id: 123, text: 'yummy' }
-    ]
-  }).payload,
-  addFruit({ name: 'orange', color: 'orange', comments: [] }).payload,
-  addFruit({ name: 'apple', color: 'red', comments: [] }).payload,
-];
+export const loadFruits = () => {
 
-export const loadFruits = () => ({
-  type: FRUITS_LOAD,
-  payload: fruits()
-});
+  return dispatch => {
+    dispatch({ type: LOADING_START });
 
-export const addFruit = fruit => {
-  fruit.id = shortid.generate();
-  fruit.timestamp = new Date();
-
-  return {
-    type: FRUIT_ADD,
-    payload: fruit
+    getFruits()
+      .then(
+        fruits => {
+          dispatch({
+            type: FRUITS_LOAD,
+            payload: fruits
+          });
+        },
+        err => {
+          dispatch({
+            type: ERROR,
+            payload: err
+          });
+        })
+      .then(() => {
+        dispatch({ type: LOADING_END });
+      });
   };
 };
 
-export const updateFruit = fruit => ({
-  type: FRUIT_UPDATE,
-  payload: fruit
-});
+export const addFruit = fruit => dispatch => {
+  postFruit(fruit)
+    .then(
+      saved => {
+        dispatch({
+          type: FRUIT_ADD,
+          payload: saved
+        });
+      },
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      });
+};
 
-export const removeFruit = fruit => ({
-  type: FRUIT_REMOVE,
-  payload: fruit
-});
+export const updateFruit = fruit => dispatch => {
+  putFruit(fruit)
+    .then(updated => {
+      dispatch({
+        type: FRUIT_UPDATE,
+        payload: updated
+      });
+    });
+};
 
-export const addComment = (fruitId, comment) => {
-  comment.id = shortid.generate();
-  comment.timestamp = new Date();
-  // comment.fruitId = fruitId;
+export const removeFruit = fruit => dispatch => {
+  deleteFruit(fruit.id)
+    .then(() => {
+      dispatch({
+        type: FRUIT_REMOVE,
+        payload: fruit
+      });
+    });
+};
 
-  return {
-    type: COMMENT_ADD,
-    payload: {
-      fruitId,
-      comment
-    }
-  };
+export const addComment = (fruitId, comment) => dispatch => {
+  postComment(fruitId, comment)
+    .then(saved => {
+      dispatch({
+        type: COMMENT_ADD,
+        payload: {
+          fruitId,
+          comment: saved
+        }
+      });
+    });
+
 };

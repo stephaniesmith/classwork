@@ -15,22 +15,24 @@ const fruits = (data && data !== 'undefined') ? JSON.parse(data) : initFruits();
 
 export default fruits;
 
-const initFruits = () => [{
-  id: shortid.generate(),
-  name: 'banana', 
-  color: 'yellow',
-  comments: [
-    { id: shortid.generate(), text: 'yummy' },
-    { id: shortid.generate(), text: 'slippery' }
-  ]
-}, { 
-  id: shortid.generate(),
-  name: 'orange', 
-  color: 'orange', 
-  comments: [] 
-}, { 
-  id: shortid.generate(),
-  name: 'apple', 
-  color: 'red', 
-  comments: []
-}];
+function initFruits() {
+  return [{
+    id: shortid.generate(),
+    name: 'banana', 
+    color: 'yellow',
+    comments: [
+      { id: shortid.generate(), text: 'yummy' },
+      { id: shortid.generate(), text: 'slippery' }
+    ]
+  }, { 
+    id: shortid.generate(),
+    name: 'orange', 
+    color: 'orange', 
+    comments: [] 
+  }, { 
+    id: shortid.generate(),
+    name: 'apple', 
+    color: 'red', 
+    comments: []
+  }];
+}

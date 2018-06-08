@@ -1,19 +1,30 @@
 import shortid from 'shortid';
 import fruits from './fruits';
 
-export const getFruits = () => Promise.resolve(fruits.slice());
+export const getFruits = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(fruits.map(f => ({ ...f, comments: [...f.comments] })));
+    }, 500);
+  });
+};
 
 export const postFruit = fruit => {
+  // return Promise.reject({
+  //   message: 'fruit stand is closed'
+  // });
+
   const newFruit = {
     ...fruit,
     id: shortid.generate(),
-    timestamp: new Date()
+    timestamp: new Date(),
+    comments: []
   };
   fruits.push(newFruit);
   return Promise.resolve(newFruit);
 };
 
-export const updateFruit = fruit => {
+export const putFruit = fruit => {
   let index = fruits.findIndex(f => f.id === fruit.id);
   if(index === -1) index = fruits.length = 1;
   const updated = { ...fruit };
@@ -28,7 +39,7 @@ export const deleteFruit = id => {
   return Promise.resolve({ removed: true });
 };
 
-export const addComment = (fruitId, comment) => {
+export const postComment = (fruitId, comment) => {
   let fruit = fruits.find(f => f.id === fruitId);
   if(!fruit) return;
 
