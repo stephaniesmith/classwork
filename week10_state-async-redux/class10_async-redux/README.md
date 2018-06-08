@@ -1,14 +1,6 @@
 Async Redux
 ===
 
-## Misc
-
-* Tomorrow:
-    * React Quiz
-    * Async Redux
-* eslint
-* ?
-
 ## React Quiz
 
 ## Redux Summary/Review
@@ -60,6 +52,10 @@ Use `applyMiddleware` to add middleware to your dispatch
 ### Example
 
 Route data calls to mock-async services api
+
+## Loading and Errors
+
+** Probably on Monday! **
 
 ### `promise-middleware`
 
@@ -113,6 +109,3 @@ omitted from how-to and introductory articles.
 ### Presentation
 
 * Common Loading and Error components
-
-
-
