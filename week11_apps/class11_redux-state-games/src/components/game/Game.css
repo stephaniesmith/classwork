@@ -1,0 +1,6 @@
+:local(.game) {
+  .players {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
