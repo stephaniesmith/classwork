@@ -8,10 +8,6 @@ export const ROUND_STATE = {
   TIE: 'TIE'
 };
 
-// expect(getRoundState({ selections: ['rock', 'scissors'] })).toBe(ROUND_STATE.WIN);
-// expect(getRoundState({ selections: ['scissors', 'paper'] })).toBe(ROUND_STATE.WIN);
-// expect(getRoundState({ selections: ['paper', 'rock'] })).toBe(ROUND_STATE.WIN);
-
 export const getSelections = state => state.selections;
 export const getRoundState = state => {
   const [one, two] = getSelections(state);

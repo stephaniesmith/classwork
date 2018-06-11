@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-// import {  } from './components/game/reducers';
+import { selections } from './components/game/reducers';
 
 const rootReducer = combineReducers({
-  
+  selections
 });
 
 const store = createStore(
