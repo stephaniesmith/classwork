@@ -1,5 +1,6 @@
 export const SELECTION = 'SELECTION';
 export const NEW_ROUND = 'NEW_ROUND';
+export const TALLY_ROUND = 'TALLY_ROUND';
 
 export const ROUND_STATE = {
   PLAYING: 'PLAYING',
@@ -8,7 +9,9 @@ export const ROUND_STATE = {
   TIE: 'TIE'
 };
 
+export const getMatch = state => state.match;
 export const getSelections = state => state.selections;
+export const getPlayerSelection = (index, state) => getSelections(state)[index];
 export const getRoundState = state => {
   const [one, two] = getSelections(state);
   
@@ -24,8 +27,8 @@ export const getRoundState = state => {
   return ROUND_STATE.LOSE;
 };
 
-const init = () => [];
-export function selections(state = init(), { type, payload }) {
+const initSelections = () => [];
+export function selections(state = initSelections(), { type, payload }) {
   switch(type) {
     case SELECTION: {
       const copy = [...state];
@@ -33,8 +36,26 @@ export function selections(state = init(), { type, payload }) {
       return copy;
     }
     case NEW_ROUND: {
-      return init();
+      return initSelections();
     }
+    default:
+      return state;
+  }
+}
+
+export const initMatch = () => ({
+  [ROUND_STATE.WIN]: 0,
+  [ROUND_STATE.LOSE]: 0,
+  [ROUND_STATE.TIE]: 0,
+});
+
+export function match(state = initMatch(), { type, payload }) {
+  switch(type) {
+    case TALLY_ROUND: 
+      return {
+        ...state,
+        [payload]: state[payload] + 1
+      };
     default:
       return state;
   }

@@ -1,6 +1,8 @@
 import { 
   selections, SELECTION, NEW_ROUND,
-  getSelections, getRoundState, ROUND_STATE } from './reducers';
+  match, initMatch, getMatch, TALLY_ROUND,
+  getSelections, getRoundState, ROUND_STATE,
+  getPlayerSelection } from './reducers';
 
 describe('selections reducer', () => {
 
@@ -37,6 +39,12 @@ describe('selections reducer', () => {
       expect(got).toBe(selections);
     });
 
+    it('gets match', () => {
+      const match = initMatch();
+      const got = getMatch({ match });
+      expect(got).toBe(match);
+    });
+
     const testRoundState = (selections, expected) => {
       expect(getRoundState({ selections })).toBe(expected);
     };
@@ -60,6 +68,31 @@ describe('selections reducer', () => {
       testRoundState(['paper', 'scissors'], ROUND_STATE.LOSE);
       testRoundState(['rock', 'paper'], ROUND_STATE.LOSE);
     });
+
+    it('gets player selection', () => {
+      const state = { selections: ['rock', 'paper'] };
+      expect(getPlayerSelection(0, state)).toBe('rock');
+      expect(getPlayerSelection(1, state)).toBe('paper');
+    });
+  });
+});
+
+describe('match', () => {
+
+  it('initializes to zero count stats', () => {
+    const state = match(undefined, {});
+    expect(state).toEqual(initMatch());
+  });
+
+  it('increments on round tally', () => {
+    const state = match(initMatch(), { 
+      type: TALLY_ROUND,
+      payload: ROUND_STATE.WIN
+    });
+    const expected = initMatch();
+    expected[ROUND_STATE.WIN] = 1;
+
+    expect(state).toEqual(expected);
   });
 });
 
