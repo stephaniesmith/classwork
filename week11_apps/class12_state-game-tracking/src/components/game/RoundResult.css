@@ -1,0 +1,8 @@
+:local(.round) {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  max-width: 610px;
+  border: 1px solid #aaa;
+  text-align: center;
+}

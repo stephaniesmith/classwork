@@ -1,0 +1,11 @@
+:local(.game) {
+  max-width: 610px;
+  margin: auto;
+
+  .players {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
