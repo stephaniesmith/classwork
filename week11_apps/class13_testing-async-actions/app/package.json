@@ -4,7 +4,9 @@
   "description": "simple adventure game",
   "main": "src/index.js",
   "scripts": {
+    "build:prod": "npm run build && npm run copy",
     "build": "webpack --mode production",
+    "copy": "rm -rf ../server/public && cp -R ./docs ../server/public",
     "start": "webpack-dev-server --hot --mode development",
     "lint": "eslint .",
     "pretest": "npm run lint",
