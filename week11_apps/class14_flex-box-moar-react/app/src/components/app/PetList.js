@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getPets } from './reducers';
+import { getPetList } from './reducers';
 import { loadPets } from './actions';
-import { Link } from 'react-router-dom';
+import PetItem from './PetItem';
 
 class Pets extends PureComponent {
 
@@ -22,13 +22,7 @@ class Pets extends PureComponent {
     return (
       <section>
         <ul>
-          {pets.map(pet => {
-            return (
-              <li key={pet._id}>
-                <Link to={`/pets/${pet._id}`}>{pet.name}</Link>
-              </li>
-            );
-          })}
+          {pets.map(id => <PetItem key={id} id={id}/>)}
         </ul>
       </section>
     );
@@ -36,6 +30,6 @@ class Pets extends PureComponent {
 }
 
 export default connect(
-  state => ({ pets: getPets(state) }),
+  state => ({ pets: getPetList(state) }),
   { loadPets }
 )(Pets);

@@ -4,22 +4,36 @@ export const LOAD_START = 'LOAD_START';
 export const LOAD_END = 'LOAD_END';
 export const ERROR = 'ERROR';
 
-export const getPets = state => state.pets;
+export const getPetsById = state => state.petsById;
+export const getPetList = state => state.petList;
+export const getPetById = (state, id) => getPetsById(state)[id];
+
 export const getPet = state => state.pet;
 
-export function pets(state = [], { type, payload }) {
+export function petsById(state = {}, { type, payload }) {
   switch(type) {
     case PETS_LOAD:
-      return payload;
+      return payload.reduce((map, pet) => {
+        map[pet._id] = { 
+          ...state[pet._id],
+          ...pet
+        };
+        return map;
+      }, {});
+    case PET_LOAD:
+      return {
+        ...state,
+        [payload._id]: payload
+      };
     default: 
       return state;
   }
 }
 
-export function pet(state = null, { type, payload }) {
+export function petList(state = [], { type, payload }) {
   switch(type) {
-    case PET_LOAD:
-      return payload;
+    case PETS_LOAD:
+      return payload.map(pet => pet._id);
     default: 
       return state;
   }

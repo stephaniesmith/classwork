@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import Pets from './Pets';
+import PetList from './PetList';
 import PetDetail from './PetDetail';
 import styles from './App.css';
 import { getUrl } from '../../services/images';
@@ -23,15 +23,16 @@ export default class App extends Component {
           </div>
 
           <Switch>
+            <Route exact path="/" render={() => <div>I am Home</div>}/>
             <Route path="/images" render={() => (
               <section>
                 <h2>Response Image with Cloudinary <strong>fetch</strong></h2>
                 <img className="image" src={getUrl(src, 'w_100')}/>
               </section>
             )}/>
-            <Route exact path="/pets" component={Pets}/>
+            <Route exact path="/pets" component={PetList}/>
             <Route path="/pets/:id" render={({ match }) => <PetDetail id={match.params.id}/>}/>
-            <Redirect to="/pets"/>
+            <Redirect to="/"/>
           </Switch>
 
         </main>

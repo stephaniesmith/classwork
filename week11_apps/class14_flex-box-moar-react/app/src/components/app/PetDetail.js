@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route, Redirect, Link } from 'react-router-dom'; 
 import { connect } from 'react-redux';
-import { getPet } from './reducers';
-import { loadPet, clearPet } from './actions';
+import { getPetById } from './reducers';
+import { loadPet } from './actions';
 
 class PetDetail extends PureComponent {
 
   static propTypes = {
     loadPet: PropTypes.func.isRequired,
-    clearPet: PropTypes.func.isRequired,
     pet: PropTypes.object,
     id: PropTypes.string.isRequired
   };
@@ -18,10 +18,6 @@ class PetDetail extends PureComponent {
     loadPet(id);
   }
 
-  componentWillUnmount() {
-    this.props.clearPet();
-  }
-
   render() {
     const { pet } = this.props;
     if(!pet) return null;
@@ -29,24 +25,18 @@ class PetDetail extends PureComponent {
     return (
       <article>
         <h3>{pet.name} the {pet.type}</h3>
-        <p>Favorite Toys are {pet.favoriteToys.join(', ')}</p>
+        <Link to={`/pets/${pet._id}/paragraph`}>paragraph view</Link>
+        <Link to={`/pets/${pet._id}/list`}>list view</Link>
+
+        <p>Favorite Toys are {pet.favoriteToys && pet.favoriteToys.join(', ')}</p>
       </article>
     );
   }
 }
 
 export default connect(
-  (state /*, props*/) => ({ 
-    pet: getPet(state),
-    // petId: props.match.params.id
+  (state, { id }) => ({ 
+    pet: getPetById(state, id) 
   }),
-  { loadPet, clearPet },
-  // (propsFromMapStateToProps, propsFromMapDispatchtoProps, ownPropsFromParent) => {
-  // (state, dispatch, ownProps) => {
-  //   return {
-  //     ...state,
-  //     ...dispatch,
-  //     petId: ownProps.match.params.id
-  //   }
-  // }
+  { loadPet }
 )(PetDetail);
