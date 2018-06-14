@@ -1,6 +1,7 @@
 import { get } from './request';
 
 const URL = '/api';
-const SCORES_URL = `${URL}/scores`;
+const PETS_URL = `${URL}/pets`;
 
-export const getAllScores =  () => get(SCORES_URL);
+export const getAllPets = () => get(PETS_URL);
+export const getPet = id => get(`${PETS_URL}/${id}`);

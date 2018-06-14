@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { selections, match } from '../components/game/reducers';
+import promiseMiddleware from './promise-middleware';
+import { pets, pet } from '../components/app/reducers';
 
 const rootReducer = combineReducers({
-  selections,
-  match
+  pets,
+  pet
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -13,7 +14,8 @@ const store = createStore(
   rootReducer,
   composeEnhancers(
     applyMiddleware(
-      thunk
+      thunk,
+      promiseMiddleware
     )
   )
 );

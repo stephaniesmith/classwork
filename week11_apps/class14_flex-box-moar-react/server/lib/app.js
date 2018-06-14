@@ -8,12 +8,9 @@ app.use(morgan('dev'));
 app.use(express.static('./public'));
 app.use(bodyParser.json());
 
-// add routes
-app.get('/api/whatever', (req, res) => {
-    res.json([1, 2, 3]);
-});
+const pets = require('./routes/pets');
 
-// bunch o other routes
+app.use('/api/pets', pets);
 
 app.use((req, res) => {
     res.sendFile('index.html', { root: './public'} );
