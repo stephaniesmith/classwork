@@ -34,15 +34,13 @@ class PetDetail extends PureComponent {
 
         <Switch>
           <Route path={`${url}/paragraph`} render={() => {
-            return <p>Favorite Toys are {pet.favoriteToys && pet.favoriteToys.join(', ')}</p>;
+            return <ParagraphView toys={pet.favoriteToys}/>;
           }}/>
+
           <Route path={`${url}/list`} render={() => {
-            return (
-              <ul>
-                {pet.favoriteToys.map((toy, i) => <li key={i}>{toy}</li>)}
-              </ul>   
-            );
+            return <ListView toys={pet.favoriteToys}/>;
           }}/>
+          
           <Redirect to={`${url}/list`}/>
         </Switch>
           
@@ -50,6 +48,18 @@ class PetDetail extends PureComponent {
     );
   }
 }
+
+const ParagraphView = ({ toys }) => (
+  <p>Favorite Toys are {toys.join(', ')}</p>
+);
+ParagraphView.propTypes = { toys: PropTypes.array };
+
+const ListView = ({ toys }) => (
+  <ul>
+    {toys.map((toy, i) => <li key={i}>{toy}</li>)}
+  </ul> 
+);
+ListView.propTypes = { toys: PropTypes.array };
 
 export default connect(
   (state, { match }) => ({ 
