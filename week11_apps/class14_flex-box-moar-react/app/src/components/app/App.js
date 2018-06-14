@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import PetList from './PetList';
 import PetDetail from './PetDetail';
@@ -20,6 +20,16 @@ export default class App extends Component {
             <Link to="/images">Images</Link>
             &nbsp;
             <Link to="/pets">Pets</Link>
+            <Route path="/pets/:id" render={({ match: { url } }) => {
+              return (
+                <Fragment>
+                  &nbsp;
+                  <Link to={`${url}/paragraph`}>paragraph view</Link>
+                  &nbsp;
+                  <Link to={`${url}/list`}>list view</Link>
+                </Fragment>
+              );
+            }}/>
           </div>
 
           <Switch>
@@ -31,7 +41,8 @@ export default class App extends Component {
               </section>
             )}/>
             <Route exact path="/pets" component={PetList}/>
-            <Route path="/pets/:id" render={({ match }) => <PetDetail id={match.params.id}/>}/>
+            {/* <Route path="/pets/:id" render={({ match }) => <PetDetail id={match.params.id}/>}/> */}
+            <Route path="/pets/:id" component={PetDetail}/>
             <Redirect to="/"/>
           </Switch>
 

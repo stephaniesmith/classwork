@@ -9,34 +9,51 @@ class PetDetail extends PureComponent {
 
   static propTypes = {
     loadPet: PropTypes.func.isRequired,
+    match: PropTypes.object,
     pet: PropTypes.object,
-    id: PropTypes.string.isRequired
   };
 
   componentDidMount() {
-    const { loadPet, id } = this.props;
-    loadPet(id);
+    const { loadPet, match } = this.props;
+    loadPet(match.params.id);
   }
 
   render() {
-    const { pet } = this.props;
-    if(!pet) return null;
-
+    const { pet, match } = this.props;
+    if(!pet || !pet.favoriteToys) return null;
+    const { url } = match;
+    
     return (
       <article>
         <h3>{pet.name} the {pet.type}</h3>
-        <Link to={`/pets/${pet._id}/paragraph`}>paragraph view</Link>
-        <Link to={`/pets/${pet._id}/list`}>list view</Link>
+        {/* <div>
+          <Link to={`${url}/paragraph`}>paragraph view</Link>
+          &nbsp;
+          <Link to={`${url}/list`}>list view</Link>
+        </div> */}
 
-        <p>Favorite Toys are {pet.favoriteToys && pet.favoriteToys.join(', ')}</p>
+        <Switch>
+          <Route path={`${url}/paragraph`} render={() => {
+            return <p>Favorite Toys are {pet.favoriteToys && pet.favoriteToys.join(', ')}</p>;
+          }}/>
+          <Route path={`${url}/list`} render={() => {
+            return (
+              <ul>
+                {pet.favoriteToys.map((toy, i) => <li key={i}>{toy}</li>)}
+              </ul>   
+            );
+          }}/>
+          <Redirect to={`${url}/list`}/>
+        </Switch>
+          
       </article>
     );
   }
 }
 
 export default connect(
-  (state, { id }) => ({ 
-    pet: getPetById(state, id) 
+  (state, { match }) => ({ 
+    pet: getPetById(state, match.params.id)
   }),
   { loadPet }
 )(PetDetail);
