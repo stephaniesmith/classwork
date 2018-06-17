@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect, Link } from 'react-router-dom'; 
+import { Switch, Route, Redirect } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 import { getPetById } from './reducers';
 import { loadPet } from './actions';

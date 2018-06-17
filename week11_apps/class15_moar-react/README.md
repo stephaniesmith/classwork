@@ -1,21 +1,27 @@
-Flex Box, Fonts, Images, More React/Redux
+Refs, children, render props
 ===
-
-## CSS Flex Box and Fonts
-
-## Cloudinary for responsive images
-
-* [sign up](https://cloudinary.com/)
-
-## redux for image gallery
-
-How do we "model" selected album?
-
-* Simple
-* Complex
 
 ## More on React
 
-* `ref`
-* `this.children`
-* render props
+## `ref`
+
+When you need to get ahold of a dom node
+
+Example: autofocus
+
+## `this.children`
+
+* Passing in JSX "template"
+* `this.children` as function
+* (alternative are props as functions)
+
+## Higher Order
+
+### functions
+
+Example: Same reducer
+
+### components
+
+* composing components
+* Example: `PrivateRoute`
