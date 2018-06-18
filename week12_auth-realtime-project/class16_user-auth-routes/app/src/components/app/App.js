@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
@@ -12,7 +12,7 @@ import PetDetail from '../pets/PetDetail';
 import AddPet from '../pets/AddPet';
 import styles from './App.css';
 
-class App extends Component {
+class App extends PureComponent {
 
   static propTypes = {
     tryLoadUser: PropTypes.func.isRequired,
@@ -32,14 +32,14 @@ class App extends Component {
           <Header/>
           <main className={styles.app}>
             { checkedAuth && 
-              <Switch>
-                <Route exact path="/" render={() => <h2>I am Home</h2>}/>
-                <Route path="/auth" component={Auth}/>
-                <PrivateRoute exact path="/pets" component={PetList}/>
-                <PrivateRoute path="/pets/new" component={AddPet}/>
-                <PrivateRoute path="/pets/:id" component={PetDetail}/>
-                <Redirect to="/"/>
-              </Switch>
+            <Switch>
+              <Route exact path="/" render={() => <h2>I am Home</h2>}/>
+              <Route path="/auth" component={Auth}/>
+              <PrivateRoute exact path="/pets" component={PetList}/>
+              <PrivateRoute path="/pets/new" component={AddPet}/>
+              <PrivateRoute path="/pets/:id" component={PetDetail}/>
+              <Redirect to="/"/>
+            </Switch>
             }
           </main>
         </div>
