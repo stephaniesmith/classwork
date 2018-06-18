@@ -25,7 +25,7 @@ export const getStoredUser = () => {
   }
 };
 
-export const clearStoredUser = () => storage.clear(key);
+export const clearStoredUser = () => storage.removeItem(key);
 
 function request(url, options = {}, data) {
   if(data) options.body = JSON.stringify(data);
