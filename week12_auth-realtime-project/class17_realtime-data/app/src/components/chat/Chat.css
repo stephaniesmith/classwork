@@ -1,0 +1,9 @@
+:local(.chat) {
+  width: 600px;
+  margin: auto;
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}

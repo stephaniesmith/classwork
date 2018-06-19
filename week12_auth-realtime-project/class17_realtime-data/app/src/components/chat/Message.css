@@ -1,0 +1,9 @@
+:local(.message) {
+  font-family: sans-serif;
+  list-style: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  background: ghostwhite;
+  margin: 3px 0;
+}
