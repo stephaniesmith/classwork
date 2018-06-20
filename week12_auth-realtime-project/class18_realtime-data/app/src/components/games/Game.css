@@ -1,0 +1,26 @@
+:local(.game) {
+
+  ul, li {
+    box-sizing: border-box;
+  }
+
+  ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+  }
+
+  li {
+    list-style: none;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #aaa;
+    text-align: center;
+    font-size: 90px;
+
+    &.open {
+      cursor: pointer;
+    }
+  }
+}
