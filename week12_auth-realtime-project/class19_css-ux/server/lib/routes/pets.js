@@ -13,4 +13,9 @@ module.exports = router
             .lean()
             .then(pet => res.json(pet))
             .catch(next);
+    })
+    .post('/', (req, res, next) => {
+        new Pet(req.body).save()
+            .then(pet => res.json(pet))
+            .catch(next);
     });

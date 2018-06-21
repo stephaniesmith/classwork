@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import { tryLoadUser } from '../auth/actions';
 import { getCheckedAuth } from '../auth/reducers';
 import Header from './Header';
+import Home from './Home';
 import Auth from '../auth/Auth';
 import PetList from '../pets/PetList';
 import PetDetail from '../pets/PetDetail';
 import AddPet from '../pets/AddPet';
 import styles from './App.css';
+import { TransitionGroup } from 'react-transition-group';
 
 class App extends PureComponent {
 
@@ -32,14 +34,16 @@ class App extends PureComponent {
           <Header/>
           <main className={styles.app}>
             { checkedAuth && 
-            <Switch>
-              <Route exact path="/" render={() => <h2>I am Home</h2>}/>
-              <Route path="/auth" component={Auth}/>
-              <PrivateRoute exact path="/pets" component={PetList}/>
-              <PrivateRoute path="/pets/new" component={AddPet}/>
-              <PrivateRoute path="/pets/:id" component={PetDetail}/>
-              <Redirect to="/"/>
-            </Switch>
+            <TransitionGroup>
+              <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/auth" component={Auth}/>
+                {/* <PrivateRoute exact path="/pets" component={PetList}/>
+                <PrivateRoute path="/pets/new" component={AddPet}/>
+                <PrivateRoute path="/pets/:id" component={PetDetail}/> */}
+                <Redirect to="/"/>
+              </Switch>
+            </TransitionGroup>
             }
           </main>
         </div>

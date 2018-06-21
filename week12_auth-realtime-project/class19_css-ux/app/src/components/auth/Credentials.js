@@ -23,7 +23,8 @@ export default class Credentials extends PureComponent {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.submit(this.state);
+    this.props.submit(this.state)
+      .catch(() => {}); // let promise know we heard
   }
 
   render() {

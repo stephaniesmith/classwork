@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getError } from './reducers';
 import { clearError } from './actions';
 import PropTypes from 'prop-types';
+import styles from './Error.css';
+import { CSSTransition } from 'react-transition-group';
 
 class Error extends PureComponent {
 
@@ -18,12 +20,23 @@ class Error extends PureComponent {
 
   render() {
     const { error } = this.props;
-    if(!error) return null;
+    // if(!error) return null;
 
-    const message = error.message || error;
 
     return (
-      <pre>{message}</pre>
+      <div className={styles.error}>
+        <CSSTransition
+          in={!!error}
+          key={0}
+          classNames="message"
+          timeout={1300}
+          unmountOnExit
+        >
+          <section onClick={this.props.clearError}>
+            {error && (error.message || error.error || error.toString())}
+          </section>
+        </CSSTransition>
+      </div>
     );
   }
 }

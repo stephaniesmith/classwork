@@ -1,15 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUser } from '../auth/reducers';
 import { logout } from '../auth/actions';
-import { Route, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Error from './Error';
+import styles from './Header.css';
 
 class Header extends Component {
 
   static propTypes = {
     user: PropTypes.object,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    match: PropTypes.object
   }
 
   handleLogout = () => {
@@ -17,11 +20,12 @@ class Header extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, match } = this.props;
+    const isHome = match.isExact && match.url === '/';
 
     return (
-      <header>
-        <h1>Pets 4 All</h1>
+      <header className={styles.header}>
+        <h1 className={isHome ? 'home-page' : 'other-page'}>Pets 4 All</h1>
         <nav>
           <Link to="/">Home</Link>
           &nbsp;
@@ -33,25 +37,19 @@ class Header extends Component {
               : <Link to="/auth">Login</Link>
           }
           
-          &nbsp;
-          <Route path="/pets/:id" render={({ match: { url } }) => {
-            return (
-              <Fragment>
-                &nbsp;
-                <Link to={`${url}/paragraph`}>paragraph view</Link>
-                &nbsp;
-                <Link to={`${url}/list`}>list view</Link>
-              </Fragment>
-            );
-          }}/>
         </nav>
-        { user && <span>Welcome {user.name}!</span> }
+        <div className="account">
+          { user && <span>Welcome {user.name}!</span> }
+        </div>
+        <div className="error">
+          <Error/>
+        </div>
       </header>
     );
   }
 }
 
-export default connect(
+export default withRouter(connect(
   state => ({ user: getUser(state) }),
   { logout }
-)(Header);
+)(Header));

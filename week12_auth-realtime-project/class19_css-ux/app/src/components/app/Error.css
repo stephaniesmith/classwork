@@ -1,0 +1,25 @@
+:local(.error) {
+  section {
+    padding: 15px 5px;
+    background: rgba(255, 0, 0, .5);
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .message-enter {
+    opacity: 0.01;
+  }
+  .message-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+  }
+  .message-exit {
+    opacity: 1;
+  }
+  .message-exit-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-out;
+  }
+}
